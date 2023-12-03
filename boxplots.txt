@@ -1,0 +1,20 @@
+%% test
+dim = 44;
+
+meanBicep = zeros(dim, 1);
+meanTricep = zeros(dim, 1);
+meanDelt = zeros(dim, 1);
+meanTrap = zeros(dim, 1);
+meanPecMajor = zeros(dim, 1);
+meanInfra = zeros(dim, 1);
+for j = 1:dim
+    meanBicep(j) = mean(emg(i).normTrials.bicep(j,:));
+    meanTricep(j) = mean(emg(i).normTrials.tricep(j,:));
+    meanDelt(j) = mean(emg(i).normTrials.delt(j,:));
+    meanTrap(j) = mean(emg(i).normTrials.trap(j,:));
+    meanPecMajor(j) = mean(emg(i).normTrials.pecMajor(j,:));
+    meanInfra(j) = mean(emg(i).normTrials.infra(j,:));
+end
+
+meanMuscles = [meanBicep, meanTricep, meanDelt, meanTrap, meanPecMajor, meanInfra];
+boxplot(meanMuscles);
